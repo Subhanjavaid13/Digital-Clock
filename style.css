@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px ;
+    padding-bottom: 10px;
+    position: sticky;
+    background: linear-gradient(45deg , #bb64e3 , #42295c);
+    color: #fff;
+    
+
+}
+.hero{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(45deg , #39024f , #1c0436);
+    color: #fff;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+.container{
+    width: 800px;
+    height: 180px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+}
+.clock{
+    height: 100%;
+    width: 100%;
+    background: rgba(235, 0, 255, 0.11);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(40px);
+    animation: zoomIn 1s ease-out forwards 0.5s;
+
+
+}
+.container::before{
+    content: '';
+    width: 180px;
+    height: 180px;
+    background: #2ced66;
+    border-radius: 5px;
+    position: absolute;
+    left: -50px;
+    top: -50px;
+    z-index: -1;
+    opacity: 0;
+    animation: fadeInBefore 1.5s ease-in forwards 0.5s;
+}
+.container::after{
+    content: '';
+    width: 180px;
+    height: 180px;
+    background: #5bcac1;
+    border-radius: 50%;
+    position: absolute;
+    right: -30px;
+    bottom: -50px;
+    z-index: -1;
+    opacity: 0;
+    animation: fadeInAfter 1.5s ease-in forwards 0.5s;
+}
+
+.clock span {
+    font-size: 80px;
+    width: 110px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    animation: fadeInText 1.5s ease-out forwards 1s;
+}
+.clock span::after {
+    position: absolute;
+    font-size: 16px;
+    bottom: -10px;
+    left: 70%;
+    transform: translateX(-50px);
+    
+}
+#hrs::after{
+    content: 'HOURS';
+}
+#min::after{
+    content: 'MIN';
+}
+#sec::after{
+    content: 'SEC';
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInBefore {
+    0% {
+        opacity: 0;
+        transform: translate(-50px, -50px) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes fadeInAfter {
+    0% {
+        opacity: 0;
+        transform: translate(30px, 50px) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-360deg);
+    }
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
